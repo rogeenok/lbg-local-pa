@@ -9,8 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.best.saintpetersburg</groupId>
-	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>best-app</artifactId>
+	<version>0.1</version>
+    <packaging>jar</packaging>
 	<name>backend</name>
 	<description>Back-End part of BEST private area application</description>
 

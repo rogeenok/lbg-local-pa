@@ -1,6 +1,6 @@
-package org.best.saintpetersburg.backend.controller;
+package org.best.saintpetersburg.backend.controller.members;
 
-import org.best.saintpetersburg.backend.model.Member;
+import org.best.saintpetersburg.backend.model.MemberAccount;
 import org.best.saintpetersburg.backend.service.httpservice.HttpService;
 import org.best.saintpetersburg.backend.service.memberservice.MemberService;
 import org.springframework.http.HttpStatus;
@@ -12,12 +12,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/members")
-public class MemberController {
+public class MemberDemoController {
 
     private MemberService memberService;
     private HttpService httpService;
 
-    MemberController(MemberService memberService, HttpService httpService) {
+    MemberDemoController(MemberService memberService, HttpService httpService) {
         this.memberService = memberService;
         this.httpService = httpService;
     }
@@ -46,16 +46,16 @@ public class MemberController {
     @ResponseBody
     public ResponseEntity<?> saveDemo(@RequestParam(defaultValue = "admin") String membername,
                                       @RequestParam(defaultValue = "admin") String memberpwd) {
-        Member member = new Member();
+        MemberAccount memberAccount = new MemberAccount();
 
-        member.setLogin(membername);
-        if (memberService.existsByUsername(member.getLogin())) {
+        memberAccount.setLogin(membername);
+        if (memberService.existsByUsername(memberAccount.getLogin())) {
             return new ResponseEntity<>(httpService.createMessage("Этот логин уже занят"), HttpStatus.CONFLICT);
         }
 
-        member.setPassword(memberpwd);
+        memberAccount.setPassword(memberpwd);
 
-        memberService.save(member);
+        memberService.save(memberAccount);
 
         return new ResponseEntity<>(httpService.createMessage("Демо пользователь сохранен успешно!"), HttpStatus.CREATED);
     }

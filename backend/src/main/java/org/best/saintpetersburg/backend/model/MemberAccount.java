@@ -4,9 +4,9 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "members")
+@Document(collection = "members_accounts")
 @Data
-public class Member {
+public class MemberAccount {
 
     @Id
     private String id;

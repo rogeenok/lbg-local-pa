@@ -1,14 +1,14 @@
 package org.best.saintpetersburg.backend.service.memberservice;
 
-import org.best.saintpetersburg.backend.model.Member;
+import org.best.saintpetersburg.backend.model.MemberAccount;
 
 public interface MemberService {
 
     boolean existsByUsername(String username);
 
-    void save(Member member);
+    void save(MemberAccount memberAccount);
 
-    Member delete(String username);
+    MemberAccount delete(String username);
 
-    Member findByUsername(String username);
+    MemberAccount findByUsername(String username);
 }

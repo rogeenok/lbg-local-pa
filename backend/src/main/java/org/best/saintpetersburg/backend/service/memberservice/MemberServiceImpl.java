@@ -1,6 +1,6 @@
 package org.best.saintpetersburg.backend.service.memberservice;
 
-import org.best.saintpetersburg.backend.model.Member;
+import org.best.saintpetersburg.backend.model.MemberAccount;
 import org.best.saintpetersburg.backend.persistance.MemberRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,18 +17,18 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void save(Member member) {
-        memberRepository.save(member);
+    public void save(MemberAccount memberAccount) {
+        memberRepository.save(memberAccount);
     }
 
     @Override
-    public Member delete(String username) {
+    public MemberAccount delete(String username) {
         // TEMPORARY NOT AVAILABLE
         return null;
     }
 
     @Override
-    public Member findByUsername(String username) {
+    public MemberAccount findByUsername(String username) {
         return memberRepository.findByLogin(username);
     }
 }
