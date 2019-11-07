@@ -1,0 +1,13 @@
+version: '3'
+services:
+  bestapp:
+    build: .
+    image: "rogeenok/best-app"
+    links:
+     - bestdatabase
+    ports:
+     - "80:8095"
+  bestdatabase:
+    image: "mongo:latest"
+    ports:
+     - "27017:27017"
