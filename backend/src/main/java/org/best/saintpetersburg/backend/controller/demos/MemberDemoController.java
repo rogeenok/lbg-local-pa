@@ -1,8 +1,8 @@
-package org.best.saintpetersburg.backend.controller.members;
+package org.best.saintpetersburg.backend.controller.demos;
 
 import org.best.saintpetersburg.backend.model.MemberAccount;
 import org.best.saintpetersburg.backend.service.httpservice.HttpService;
-import org.best.saintpetersburg.backend.service.memberservice.MemberService;
+import org.best.saintpetersburg.backend.service.memberservice.MemberAccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +14,11 @@ import java.util.Map;
 @RequestMapping(value = "/api/members")
 public class MemberDemoController {
 
-    private MemberService memberService;
+    private MemberAccountService memberAccountService;
     private HttpService httpService;
 
-    MemberDemoController(MemberService memberService, HttpService httpService) {
-        this.memberService = memberService;
+    MemberDemoController(MemberAccountService memberAccountService, HttpService httpService) {
+        this.memberAccountService = memberAccountService;
         this.httpService = httpService;
     }
 
@@ -35,8 +35,8 @@ public class MemberDemoController {
     @GetMapping("/demo/get")
     @ResponseBody
     public ResponseEntity<?> getDemoParams(@RequestParam("membername") String membername) {
-        if (memberService.existsByUsername(membername)) {
-            return new ResponseEntity<>(memberService.findByUsername(membername), HttpStatus.OK);
+        if (memberAccountService.existsByUsername(membername)) {
+            return new ResponseEntity<>(memberAccountService.findByUsername(membername), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(httpService.createMessage("Пользователь с таким логином не найден"), HttpStatus.NOT_FOUND);
         }
@@ -49,13 +49,13 @@ public class MemberDemoController {
         MemberAccount memberAccount = new MemberAccount();
 
         memberAccount.setLogin(membername);
-        if (memberService.existsByUsername(memberAccount.getLogin())) {
+        if (memberAccountService.existsByUsername(memberAccount.getLogin())) {
             return new ResponseEntity<>(httpService.createMessage("Этот логин уже занят"), HttpStatus.CONFLICT);
         }
 
         memberAccount.setPassword(memberpwd);
 
-        memberService.save(memberAccount);
+        memberAccountService.save(memberAccount);
 
         return new ResponseEntity<>(httpService.createMessage("Демо пользователь сохранен успешно!"), HttpStatus.CREATED);
     }
