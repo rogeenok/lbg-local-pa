@@ -1,24 +1,24 @@
 package org.best.saintpetersburg.backend.service.memberservice;
 
 import org.best.saintpetersburg.backend.model.MemberAccount;
-import org.best.saintpetersburg.backend.persistance.MemberRepository;
+import org.best.saintpetersburg.backend.persistance.members.MemberAccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberServiceImpl implements MemberService {
-    private MemberRepository memberRepository;
+public class MemberAccountServiceImpl implements MemberAccountService {
+    private MemberAccountRepository memberAccountRepository;
 
-    MemberServiceImpl(MemberRepository memberRepository) { this.memberRepository = memberRepository; }
+    MemberAccountServiceImpl(MemberAccountRepository memberAccountRepository) { this.memberAccountRepository = memberAccountRepository; }
 
 
     @Override
     public boolean existsByUsername(String username) {
-        return memberRepository.existsByLogin(username);
+        return memberAccountRepository.existsByLogin(username);
     }
 
     @Override
     public void save(MemberAccount memberAccount) {
-        memberRepository.save(memberAccount);
+        memberAccountRepository.save(memberAccount);
     }
 
     @Override
@@ -29,6 +29,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberAccount findByUsername(String username) {
-        return memberRepository.findByLogin(username);
+        return memberAccountRepository.findByLogin(username);
     }
 }

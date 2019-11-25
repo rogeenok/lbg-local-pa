@@ -2,7 +2,7 @@ package org.best.saintpetersburg.backend.service.memberservice;
 
 import org.best.saintpetersburg.backend.model.MemberAccount;
 
-public interface MemberService {
+public interface MemberAccountService {
 
     boolean existsByUsername(String username);
 
