@@ -48,8 +48,8 @@ public class MemberDemoController {
                                       @RequestParam(defaultValue = "admin") String memberpwd) {
         MemberAccount memberAccount = new MemberAccount();
 
-        memberAccount.setLogin(membername);
-        if (memberAccountService.existsByUsername(memberAccount.getLogin())) {
+        memberAccount.setUsername(membername);
+        if (memberAccountService.existsByUsername(memberAccount.getUsername())) {
             return new ResponseEntity<>(httpService.createMessage("Этот логин уже занят"), HttpStatus.CONFLICT);
         }
 
