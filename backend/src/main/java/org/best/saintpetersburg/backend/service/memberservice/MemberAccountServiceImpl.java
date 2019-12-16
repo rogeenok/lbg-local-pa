@@ -13,7 +13,7 @@ public class MemberAccountServiceImpl implements MemberAccountService {
 
     @Override
     public boolean existsByUsername(String username) {
-        return memberAccountRepository.existsByLogin(username);
+        return memberAccountRepository.existsByUsername(username);
     }
 
     @Override
@@ -29,6 +29,6 @@ public class MemberAccountServiceImpl implements MemberAccountService {
 
     @Override
     public MemberAccount findByUsername(String username) {
-        return memberAccountRepository.findByLogin(username);
+        return memberAccountRepository.findByUsername(username);
     }
 }
